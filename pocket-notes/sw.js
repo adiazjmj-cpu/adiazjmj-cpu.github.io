@@ -1,9 +1,9 @@
-/* Pocket Notes service worker (v38 PWA). Caches the app shell so the app opens
+/* Pocket Notes service worker (v39 PWA). Caches the app shell so the app opens
    offline after the first visit and works as a home-screen web app. The app is a
    single self-contained file, so the shell is just index.html + the manifest and
    icons. Notes themselves live in IndexedDB/localStorage on the device, not in
    this cache — the worker never touches them.
-   v38: the cache name tracks the app version, and index.html is fetched
+   v39: the cache name tracks the app version, and index.html is fetched
    network-first. The old worker (cache "pocket-notes-v17") was cache-first for
    everything, so a browser that had already installed the PWA kept serving its
    cached copy forever — a new index.html on the server never reached it, and
@@ -11,7 +11,7 @@
    old worker intercepts the new worker's cache fill and hands it the OLD
    index.html. Network-first for index.html is what actually delivers a new
    version (with the cached copy as the offline fallback). */
-const CACHE = "pocket-notes-v38";
+const CACHE = "pocket-notes-v39";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {
